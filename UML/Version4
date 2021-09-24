@@ -1,0 +1,33 @@
+@startuml
+
+left to right direction
+
+actor Student
+actor Car
+
+rectangle "Web Application System" {
+  usecase "View Instructions" as viewinstructions
+  usecase "View Dashboard" as viewdashboard
+  usecase "View Commmands History" as viewcommandshistory
+  usecase "Create Movement Commands" as createmovementcommands
+  usecase "Send Movement Commands" as sendmovementcommands
+  usecase "Rearrange Movement Commands" as rearrangemovementcommands
+  usecase "Delete Movement Commands" as deletemovementcommands
+  usecase "Receive Movement Commands" as receivemovementcommands
+  usecase "Send Sensor Data" as sendsensordata
+
+  (createmovementcommands) <. (sendmovementcommands) : <<extends>>
+  (createmovementcommands) <. (rearrangemovementcommands) : <<extends>>
+  (createmovementcommands) <. (deletemovementcommands) : <<extends>>
+
+}
+
+Student -- viewinstructions
+Student -- viewdashboard
+Student -- viewcommandshistory
+Student -- createmovementcommands
+
+receivemovementcommands -- Car
+sendsensordata -- Car
+
+@enduml
