@@ -122,6 +122,4 @@ tilesetImage.onload = function() {
    draw();
    setLayer(0);
 }
-
-tilesetImage.src = "../images/spritesheet.png";
-
+tilesetImage.src = "images/spritesheet.png";
