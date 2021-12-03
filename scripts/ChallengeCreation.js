@@ -54,14 +54,52 @@ function getCoords(e) {
    return [Math.floor(mouseX / 100), Math.floor(mouseY / 100)];
 }
 
-//converts data to image:data string and pipes into new browser tab
-function exportImage() {
+// Save image to local storage
+function saveImage() {
    var data = canvas.toDataURL();
-   var image = new Image();
+   var image = new Image(); 
    image.src = data;
+   
+   //var a = document.createElement('a');
+   //a.download = "download.png";
+   //a.href = data;
+   //a.click();
+   //a.delete();
+   
+   //var w = window.open('');
+   //w.document.write(image.outerHTML);
 
-   var w = window.open("");
-   w.document.write(image.outerHTML);
+   var modal = document.getElementById("modal_succ");
+   var modal_err = document.getElementById("modal_fail");
+   var span = document.getElementsByClassName("close")[0];
+   var span_err = document.getElementsByClassName("close2")[0];
+
+   console.log(isCanvasBlank(canvas));
+
+   //if at least one canvas is not empty
+   if (!isCanvasBlank(canvas)){
+      modal.style.display = "block";
+      span.onclick = function() {
+         modal.style.display = "none";
+      }
+      window.onclick = function(event) {
+         if (event.target == modal) {
+            modal.style.display = "none";
+         }
+      }
+      clearCanvas();
+   }
+   else{
+      modal_err.style.display = "block";
+      span_err.onclick = function() {
+         modal_err.style.display = "none";
+      }
+      window.onclick = function(event) {
+         if (event.target == modal) {
+            modal_err.style.display = "none";
+         }
+      }
+   }
 }
 
 //Reset state to empty
@@ -70,6 +108,16 @@ function clearCanvas() {
    draw();
 }
 
+//Checking canvas if its empty
+function isCanvasBlank(canvas){
+   var ctx = canvas.getContext("2d");
+
+   const pixelBuffer = new Uint32Array(ctx.getImageData(0, 0, canvas.width, canvas.height).data.buffer);
+
+   return !pixelBuffer.some(color => color!=0);
+}
+
+//Drawing tiles into canvas
 function draw() {
    var ctx = canvas.getContext("2d");
    ctx.clearRect(0, 0, canvas.width, canvas.height);
