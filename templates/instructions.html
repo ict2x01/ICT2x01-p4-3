@@ -1,12 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <div data-include="header.html"></div>
-    </head>
-    <body>
-        <main>
-            <h1>Instructions</h1>
-            <p>This project aims to create a user-friendly environment for children to gain exposure to coding by
+<head>
+    <meta charset="UTF-8">
+	<link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/jumbotron/">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Instruction Page</title>
+</head>
+<style>
+div {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 80px;
+  margin-left: 80px;
+}
+.col-md-3 {
+  box-shadow: 0 0px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  margin-left: 90px;
+  margin-right: 0px;
+}
+.col-md-3:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+</style>
+<body>
+
+<div>
+<h2>Instructions</h2>
+This project aims to create a user-friendly environment for children to gain exposure to coding by
                 stimulating their critical thinking and problem-solving skills. This is done with the use of a gamified
                 platform to create a fun and enriching experience for young learners, in hopes to help them develop a
                 passion for coding, which is typically seen as daunting and complicated for many adults.
@@ -15,7 +37,23 @@
                 portal tracks the movement of the car for multiple rounds of gameplay and different scenarios for users to
                 experiment and learn from. Using conditional logic, iterations and functions represented by simple blocks,
                 users arrange commands (steps) to direct the robotic car towards the maze exit to complete the challenge.
-            </p>
-        </main>
-    </body>
-</html>
+            </div>
+<div class="row">
+          <div class="col-md-3">
+            <h2>Game Play</h2>
+            <p>Get the car from start to finish! Select and arrange commands, the car will move according to the commands chosen. Each command makes the car behave differently. </p>
+            <p><a class="btn btn-secondary" href="./PlayPageUI.html" role="button">Play now!</a></p>
+          </div>
+          <div class="col-md-3">
+            <h2>Creating Challenges</h2>
+            <p>You can also create new challenges for yourself and other players to complete! These challenges will be saved for use in the future. </p>
+            <p><a class="btn btn-secondary" href="./ChallengeCreation.html" role="button">Create Challenges</a></p>
+          </div>
+		  <div class="col-md-3">
+            <h2>History</h2>
+            <p>View your game history here to find out what you did wrong and how you can improve.</p>
+			<br>
+            <p><a class="btn btn-secondary" href="./history.html" role="button">View History</a></p>
+          </div>
+        </div>
+</body>
