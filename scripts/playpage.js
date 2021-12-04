@@ -1,22 +1,29 @@
 'use strict';
 
-var x = 56;
-var y = 224;
-var sizex = 56;
-var sizey = 56;
+var block_size = 56;
+var pos_x = 56;
+var pos_y = 224;
+var width = 280;
+var height = 280;
 
-var facing = "north"; 
+var bgimage = "../images/tiles.png";
+var playericn = "../images/player.png";
+
+var canvas = document.querySelector("canvas");
 
 function setupCanvas(){
-  var canvas = document.getElementById("canvas");
-  canvas.width = 280;
-  canvas.height = 280;
-
   var ctx = canvas.getContext("2d");
-
-  ctx.drawImage(
-      carfront, x, y, sizex, sizey
-  )
+  var background = new Image();
+  var player = new Image();
+  
+  background.onload = function(){
+    ctx.drawImage(background,0,0,width,height);
+    player.src = playericn;
+  } 
+  player.onload = function(){
+    ctx.drawImage(player, pos_x, pos_y, block_size, block_size);
+  }
+  background.src = bgimage;
 }
 
 function showCode() {
@@ -56,7 +63,7 @@ Blockly.Blocks['forward'] = {
   
 Blockly.Blocks['left'] = {
   init: function() {
-    this.appendValueInput("VALUE").setCheck("String").appendField("Turn Left");
+    this.appendValueInput("VALUE").setCheck("String").appendField("Move Left");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(255);
@@ -67,7 +74,7 @@ Blockly.Blocks['left'] = {
   
 Blockly.Blocks['right'] = {
   init: function() {
-    this.appendValueInput("VALUE").setCheck("String").appendField("Turn Right");
+    this.appendValueInput("VALUE").setCheck("String").appendField("Move Right");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(255);
@@ -98,13 +105,13 @@ Blockly.JavaScript['forward'] = function(block) {
 
 // Move left block return
 Blockly.JavaScript['left'] = function(block) {
-  var code = "turnLeft()\n";
+  var code = "moveLeft()\n";
   return code;
 };
 
 // Move right block return
 Blockly.JavaScript['right'] = function(block) {
-  var code = "turnRight()\n";
+  var code = "moveRight()\n";
   return code;
 };
 
@@ -119,71 +126,28 @@ Blockly.JavaScript['while'] = function(block) {
 };
 
 function moveForward(){
-  var canvas = document.getElementById("canvas");
+  pos_y -= block_size;
   var ctx = canvas.getContext("2d");
   ctx.clearRect(0,0, canvas.width, canvas.height);
+
+  setupCanvas();
+}
   
-  if (facing == "north"){
-    y -= 56;
-    ctx.drawImage(carfront, x, y, sizex, sizey);
-  }
-  else if(facing == "east"){
-    x += 56;
-    ctx.drawImage(carright, x, y, sizex, sizey);
-  }
-  else if(facing == "west"){
-    x -= 56;
-    ctx.drawImage(carleft, x, y, sizex, sizey);
-  }
-  else{
-    y += 56;
-    ctx.drawImage(carback, x, y, sizex, sizey);
-  }  
-} 
 
-function turnRight(){
-  var canvas = document.getElementById("canvas");
+function moveRight(){
+  pos_x += block_size;
   var ctx = canvas.getContext("2d");
   ctx.clearRect(0,0, canvas.width, canvas.height);
 
-  if(facing == "north"){
-    facing = "east";
-    ctx.drawImage(carright, x, y, sizex, sizey);
-  }
-  else if (facing == "east"){
-    facing = "south";
-    ctx.drawImage(carback, x, y, sizex, sizey);
-  }
-  else if (facing == "south"){
-    facing = "west";
-   ctx.drawImage(carleft, x, y, sizex, sizey);
-  }
-  else{
-    facing = "north";
-    ctx.drawImage(carfront, x, y, sizex, sizey);
-  }
-} 
+  setupCanvas();
+}
 
-function turnLeft(){
-  var canvas = document.getElementById("canvas");
+
+function moveLeft(){
+  pos_x -= block_size;
   var ctx = canvas.getContext("2d");
   ctx.clearRect(0,0, canvas.width, canvas.height);
 
-  if(facing == "north"){
-    facing = "west";
-    ctx.drawImage(carleft, x, y, sizex, sizey);
-  }
-  else if (facing == "east"){
-    facing = "north";
-    ctx.drawImage(carfront, x, y, sizex, sizey);
-  }
-  else if (facing == "south"){
-    facing = "east";
-   ctx.drawImage(carright, x, y, sizex, sizey);
-  }
-  else{
-    facing = "south";
-    ctx.drawImage(carback, x, y, sizex, sizey);
-  }
+  setupCanvas();
 }
 
