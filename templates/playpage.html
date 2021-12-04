@@ -13,7 +13,7 @@
     <script src="https://unpkg.com/blockly"></script> <!-- have to be first-->
     <script src="../scripts/playpage.js"></script>
 
-    <title>THE GAME</title>
+    <title></title>
 
 </head>
 <body onload="setupCanvas()">
@@ -22,13 +22,8 @@
         <div class="row mt-5 mb-2" style=height:300px>
             <!-- Map columns (size 10)-->
             <div id="mapArea" class="bg border rounded-2 col-10" style="height:300px">
-                <!-- Map area -->
-                <img id="carfront" class="hidden" src='../images/carfront.png'></img>
-                <img id="carright" class="hidden" src='../images/carright.png'></img>
-                <img id="carleft" class="hidden" src='../images/carleft.png'></img>
-                <img id="carback" class="hidden" src='../images/carback.png'></img>
-                
-                <canvas id="canvas" class="canvas"></canvas>
+                <!-- Map Area -->
+                <canvas class="canvas" width="280" height="280"></canvas>
             </div>
             <!-- End of Map column-->
 
@@ -36,12 +31,12 @@
             <div class="col-2">
                 <div class="row mb-2">
                     <div id ="selectButton" class="col">
-                        <button type="button" class="btn btn-primary btn-block">Select Challenge</button>
+                        <a type="submit" class="btn btn-primary btn-block" href="../../createchallengeUI/templates/ChallengeCreation.html">Select Challenge</a>
                     </div>
                 </div>
                 <div class="row mb-2">
                     <div id="clearButton" class="col">
-                        <button type="button" class="btn btn-primary btn-block">Clear Challenge</button>
+                        <button type="button" class="btn btn-primary btn-block" onclick="defaultCanvas()">Clear Challenge</button>
                     </div>
                 </div>
             </div> 
@@ -117,5 +112,6 @@
         onresize();
         Blockly.svgResize(workspace);
     </script>
+    <script src="../scripts/playpage.js"></script>
 </body>
 </html>
