@@ -24,6 +24,8 @@ Dependencies
 3. For files related to the server-side logic, it is to be placed in a folder name `backend_scripts`.
 4. Files have to be named according to the feature that it contains. example: `<feature>page.php`
 
+**Exception: index.php - This file will not reside in any folder to allow hosted server to automatically run it.**
+
 ### Git Commands
 1. `git checkout -b <branchname>` - For a new branch
 2. `git add` - Adding file locally
