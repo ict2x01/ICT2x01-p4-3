@@ -1,7 +1,7 @@
 <?php
 
 function retrieveAllChallenges(){
-    $db_filepath = "../../challenges.db";
+    $db_filepath = "../challenges.db";
     $db = new SQLite3($db_filepath);
     $sql_stmt = "SELECT * from challenges";
     $prepared_stmt = $db->prepare($sql_stmt);
@@ -11,7 +11,7 @@ function retrieveAllChallenges(){
 }
 
 function deleteChallenge($id){
-    $db_filepath = "../../challenges.db";
+    $db_filepath = "../challenges.db";
     $db = new SQLite3($db_filepath);
 
     $sql_stmt = "DELETE FROM challenges WHERE id=:id";
