@@ -6,6 +6,8 @@
         <?php
             include "head.html";
         ?>
+        <link rel="stylesheet" href="../styles/playpage.css">
+        
         <!-- Scripts for injecting Blockly -->
         <script src="https://unpkg.com/blockly"></script> <!-- have to be first-->
         <script src="../scripts/playpage.js"></script>
@@ -238,4 +240,3 @@
         </script>
     </body>
 </html>
-
