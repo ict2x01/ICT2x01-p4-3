@@ -1,0 +1,70 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  html { height: 100% }
+  
+  /* Add some padding inside the card container */
+  .card_body {
+    padding: 2px 16px;
+  }
+  
+  body {
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 1em;
+    background: #FFF9E4 0%;
+    color: #2f2c48;
+  }
+  
+  .card {
+    background: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    padding-bottom: 16px;
+    width: 20rem;
+  }
+  
+  header {
+    display:flex;
+    justify-content: space-between;      
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    margin-bottom:1em;
+    padding: 16px;
+  }
+  
+  button:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .primary-button {
+    border:0;
+    background: #4e84fa;
+    border-top:4px solid transparent;
+    border-bottom: 4px solid #3166c7;
+    color: #fff;
+    border-radius: 6px;
+    outline:0;
+    padding: 6px 16px;
+    cursor:pointer;
+  }
+
+  .danger-button {
+    border:0;
+    background: red;
+    border-top:4px solid transparent;
+    border-bottom: 4px solid maroon;
+    color: #fff;
+    border-radius: 6px;
+    outline:0;
+    padding: 6px 16px;
+    cursor:pointer;
+  }
+
+  /* Modal Content/Box */
+ .modal-success {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%; /* Could be more or less, depending on screen size */
+}
