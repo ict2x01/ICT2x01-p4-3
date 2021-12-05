@@ -27,6 +27,10 @@ Dependencies
 
 **Exception: index.php - This file will not reside in any folder to allow hosted server to automatically run it.**
 
+### Bug Fixes and Code edits
+1. Changes to features' code after merging to `dev` have to be commited back to feature branch and merge again.
+2. Do not commit directly into `dev` branch. 
+
 ### Git Commands
 1. `git checkout -b <branchname>` - For a new branch
 2. `git add` - Adding file locally
