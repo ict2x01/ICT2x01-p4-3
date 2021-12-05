@@ -13,13 +13,9 @@
             <br><br>
             <a class="btn btn-primary" href="playpage.php" role="button">PLAY!</a>
             <br><br>
-            <a class="btn btn-info" href="instructions.html" role="button">Instructions</a>
-            <br><br>
             <a class="btn btn-success" href="dashboard.php" role="button">Dashboard</a>
-            <br><br>
-            <a class="btn btn-secondary" href="history.html" role="button">History</a>
             <br><br><br><br>
-            <a class="btn btn-secondary" href="login.php" style="float: right" role="button">Trainer Login</a>
+            <a class="btn btn-info" href="login.php" style="float: right" role="button">Trainer Login</a>
         </main>
     </body>
 </html>
