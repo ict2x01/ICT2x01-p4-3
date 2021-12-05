@@ -1,16 +1,4 @@
 'use strict';
-
-var block_size = 56;
-var pos_x = 56;
-var pos_y = 224;
-var width = 280;
-var height = 280;
-
-var bgimage = "../images/tiles.png";
-var playericn = "../images/player.png";
-
-var canvas = document.querySelector("canvas");
-
 function setupCanvas(){
   var ctx = canvas.getContext("2d");
   var background = new Image();
@@ -24,6 +12,14 @@ function setupCanvas(){
     ctx.drawImage(player, pos_x, pos_y, block_size, block_size);
   }
   background.src = bgimage;
+}
+
+function resetCanvas(){
+  var ctx = canvas.getContext("2d");
+  ctx.clearRect(0,0, canvas.width, canvas.height);
+  pos_x = 56;
+  pos_y = 224;
+  setupCanvas();
 }
 
 function showCode() {
@@ -83,6 +79,17 @@ Blockly.Blocks['right'] = {
   }
 };
 
+Blockly.Blocks['down'] = {
+  init: function() {
+    this.appendValueInput("VALUE").setCheck("String").appendField("Move Down");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(255);
+  this.setTooltip("Moves the car right");
+  this.setHelpUrl("");
+  }
+};
+
 Blockly.Blocks['while'] = {
   init: function() {
     this.appendDummyInput()
@@ -115,6 +122,12 @@ Blockly.JavaScript['right'] = function(block) {
   return code;
 };
 
+// Move right block return
+Blockly.JavaScript['down'] = function(block) {
+  var code = "moveDown()\n";
+  return code;
+};
+
 //Move car till the end
 Blockly.JavaScript['while'] = function(block) {
   var branch = Blockly.statementToCode(block, 'DO');
@@ -124,30 +137,4 @@ Blockly.JavaScript['while'] = function(block) {
   }
   return 'while (notDone()) {\n' + branch + '}\n';
 };
-
-function moveForward(){
-  pos_y -= block_size;
-  var ctx = canvas.getContext("2d");
-  ctx.clearRect(0,0, canvas.width, canvas.height);
-
-  setupCanvas();
-}
-  
-
-function moveRight(){
-  pos_x += block_size;
-  var ctx = canvas.getContext("2d");
-  ctx.clearRect(0,0, canvas.width, canvas.height);
-
-  setupCanvas();
-}
-
-
-function moveLeft(){
-  pos_x -= block_size;
-  var ctx = canvas.getContext("2d");
-  ctx.clearRect(0,0, canvas.width, canvas.height);
-
-  setupCanvas();
-}
 
