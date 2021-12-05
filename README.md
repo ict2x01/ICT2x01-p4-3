@@ -13,6 +13,7 @@ Dependencies
 1. The `main` branch will serve the final completed web service product.
 1. `dev` will serve as a center point for all features, before merging into `main` for the final product. 
 2. All features will have to be branch off from `dev` and be worked on individually before merging back to `dev` upon completion.
+3. The `base` branch will contain all the universal files that is needed by all other feature.
 
 ### New Features
 1. All feature branches should be named `feature/<feature_name>`.
