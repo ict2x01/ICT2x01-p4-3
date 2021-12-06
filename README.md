@@ -17,6 +17,7 @@ This is a basic project for children aged 9 to 12 to learning programming throug
 5. Add the path from point 3, into the `PATH` section in `"System Variables"` under `"Environmental Variable"`
 ![image](https://user-images.githubusercontent.com/33278298/144865694-c095112d-82f0-4b5f-8f76-f2cfe7aacaca.png)
 6. Go into the path from point 3, look for `"php" -> "php.ini"`, inside the `"php.ini"` file uncomment `"extension=sqlite3"`
+
 ![image](https://user-images.githubusercontent.com/33278298/144866302-0edd5f11-82bc-48da-9ae6-2e5a724d16ae.png)
 
 ### Running
