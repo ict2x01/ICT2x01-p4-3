@@ -16,7 +16,7 @@
     <header>
       <h1>Delete a challenge!</h1>
       <!-- back to trainer page -->
-      <a type="submit" class="primary-button" href=""> < Back</a>
+      <a type="submit" class="primary-button" href="trainer.php"> < Back</a>
    </header>
    <!-- End of Header area-->
     <div class="row row-cols-1 row-cols-md-3 g-4">
