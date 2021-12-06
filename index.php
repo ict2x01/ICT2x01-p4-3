@@ -1,113 +1,69 @@
+<?php session_start(); ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <?php
-            include "templates/head.html";
-        ?>
-        <style>
-body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box;}
 
-/* Button used to open the contact form - fixed at the bottom of the page */
-.open-button {
-  background-color: #555;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  position: fixed;
-  bottom: 23px;
-  right: 28px;
-  width: 280px;
-}
+<head>
+  <?php
+  include "templates/head.html";
+  ?>
+  <link rel="stylesheet" href="../styles/index.css">
+</head>
 
-/* The popup form - hidden by default */
-.form-popup {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  right: 15px;
-  border: 3px solid #f1f1f1;
-  z-index: 9;
-}
+<body>
+  <div class="card mb-3" style="width: 50rem;">
+    <img class="card-img-top" src="images/car.jpg">
+    <div class="card-body">
+      <h1 class="card-title text-center">Welcome to the carKART project!</h1>
+      <a class="btn btn-primary btn-lg" href="templates/playpage.php" role="button">PLAY!</a>
+      <a class="btn btn-primary btn-lg" href="templates/dashboard.php" role="button">Dashboard</a>
+      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Trainer Login!</button>
+      <?php
+      if (isset($_SESSION["error"])) {
+        $error = $_SESSION["error"];
+        echo "<div><p>$error<p></div>";
+      }
+      ?>
 
-/* Add styles to the form container */
-.form-container {
-  max-width: 300px;
-  padding: 10px;
-  background-color: white;
-}
+      <div id="id01" class="modal">
 
-/* Full-width input fields */
-.form-container input[type=text], .form-container input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-}
+        <form class="modal-content animate" action="scripts/login.php" method="post">
+          <div class="text-center">
+            <h2>Enter Master Password</h2>
+          </div>
 
-/* When the inputs get focus, do something */
-.form-container input[type=text]:focus, .form-container input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
+          <div class="container">
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
 
-/* Set a style for the submit/login button */
-.form-container .btn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom:10px;
-  opacity: 0.8;
-}
+            <button type="submit">Login</button>
+            <input type="hidden" name="submitted" value="1">
+          </div>
 
-/* Add a red background color to the cancel button */
-.form-container .cancel {
-  background-color: red;
-}
+          <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
-/* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
-  opacity: 1;
-}
-</style>
-    </head>
-    <body>
-        <main class="box ctr">
-            <h1>CarKART</h1>
-            <br><br>
-            <img src="images/car.jpg" width="384" height="216">
-            <br><br>
-            <a class="btn btn-primary" href="templates/playpage.php" role="button">PLAY!</a>
-            <br><br>
-            <a class="btn btn-success" href="templates/dashboard.php" role="button">Dashboard</a>
-            <br><br><br><br>
-            <button class="open-button" onclick="openForm()">Trainer's Only!</button>
-            <div class="form-popup" id="myForm">
-                <form action="scripts/login.php" method="post" class="form-container">
-                    <h2>Enter Master Password</h2>
-                    <label><b>Password</b></label>
-                    <input type="password" name="password">
-                    <button type="submit" class="btn">Login</button>
-                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-                    <input type="hidden" name="submitted" value="1">
-                </form>
-            </div>
-            
-            <script>
-            function openForm() {
-            document.getElementById("myForm").style.display = "block";
-            }
 
-            function closeForm() {
-            document.getElementById("myForm").style.display = "none";
-            }
-            </script>
-        </main>
-    </body>
+  <script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+  </main>
+</body>
+
 </html>
+
+<?php unset($_SESSION["error"]);
