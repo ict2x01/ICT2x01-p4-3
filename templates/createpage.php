@@ -16,7 +16,7 @@
            <h1>Challenge Creation</h1>
            <div>
               <!-- back to trianer page -->
-            <a type="submit" class="primary-button" href=""> < Back</a>
+            <a type="submit" class="primary-button" href="trainer.php"> < Back</a>
            </div>
         </header>
         <!-- End of Header area-->
