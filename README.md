@@ -45,6 +45,8 @@ Merging into `master` will only be allowed when every feature branch have been c
     
 
 ## UAT 
+Uploaded diagrams can be found in the folder `diagrams`.
+
 ### Updated Use Case Diagram
 ![image](https://user-images.githubusercontent.com/33278298/144850152-65fa0c84-d429-4bb8-82f5-0f95d3ccfc8d.png)
 1. "Upload Challenge" is changed to "Create Challenge" - Trainers will create the challenge on the web portal itself instead of uploading
