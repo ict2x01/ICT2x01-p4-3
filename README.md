@@ -91,7 +91,7 @@ Uploaded diagrams can be found in the folder `diagrams`.
 2. Uploading of challenge is now creating of challenge, checks for file uploads are removed 
 
 ### Blackbox Testing (UAT) Video
-The UAT video can be found in the folder `tests`.
+The UAT video can be found in the folder `tests`, or on YouTube at https://youtu.be/2ROyMSwDPJg.
 
 
 ## Whitebox Testing
