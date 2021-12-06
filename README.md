@@ -92,6 +92,7 @@ Uploaded diagrams can be found in the folder `diagrams`.
 
 ### Blackbox Testing (UAT) Video
 The UAT video can be found in the folder `tests`, or on YouTube at https://youtu.be/2ROyMSwDPJg.
+[![Watch the video](https://i.imgur.com/2ROyMSwDPJg)](https://youtu.be/2ROyMSwDPJg)
 
 
 ## Whitebox Testing
