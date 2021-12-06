@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+ }
+ 
+ html { height: 100% }
+ 
+ body {
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 1em;
+    background: linear-gradient(180deg, #FFF9E4 0%, #EEEED8 100%);
+    display: flex;
+    justify-content: space-around;
+    color: #2f2c48;
+ }
+ 
+ header {
+   display:flex;
+   justify-content: space-between;      
+   align-items: center;
+   border-bottom: 1px solid #ddd;
+   margin-bottom:1em;
+   padding: 16px;
+}
+  
