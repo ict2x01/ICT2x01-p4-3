@@ -1,10 +1,11 @@
-<?php require_once "/backend_scripts/retrievechallenge.php"; ?>
+<?php require_once "../backend_scripts/retrievechallenge.php"; ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <?php
-        include "head.html";
+    include "head.html";
     ?>
     <link rel="stylesheet" href="../styles/playpage.css">
 
@@ -19,15 +20,22 @@
     <h1>Play Challenge!</h1>
     <div>
         <!-- back to index page -->
-        <a type="submit" class="primary-button" href="index.php"> < Back</a>
+        <a type="submit" class="primary-button" href="../index.php">
+            < Back</a>
     </div>
 </header>
 
 <body onload="setupCanvas()">
     <div class="container">
         <div class="row mt-5 mb-2" style=height:300px>
+            <div class="col-2">
+                <div id="instructions" class="col">
+                    <!-- go to selectpage -->
+                    <button type="button" class="primary-button w-100" onclick="showInstructions()">Instructions</button>
+                </div>
+            </div>
             <!-- Map columns (size 10)-->
-            <div id="mapArea" class="bg border rounded-2 col-10" style="height:300px">
+            <div id="mapArea" class="bg border rounded-2 col-8" style="height:300px">
                 <!-- Map Area-->
                 <canvas class="canvas" width="280" height="280"></canvas>
             </div>
@@ -36,17 +44,17 @@
             <!-- Button column (size 2)-->
             <div class="col-2">
                 <div class="row mb-2">
-                    <div id ="selectButton" class="col">
+                    <div id="selectButton" class="col">
                         <!-- go to selectpage -->
-                        <a type="submit" class="primary-button" href="selectpage.php">Select Challenge</a>
+                        <a type="submit" class="primary-button w-100" href="selectpage.php">Select Challenge</a>
                     </div>
                 </div>
                 <div class="row mb-2">
                     <div id="clearButton" class="col">
-                        <button type="button" class="primary-button" onclick="resetCanvas()">Reset Challenge</button>
+                        <button type="button" class="primary-button w-100" onclick="resetCanvas()">Reset Challenge</button>
                     </div>
                 </div>
-            </div> 
+            </div>
             <!-- End of Button column-->
         </div>
     </div>
@@ -65,9 +73,9 @@
                     </div>
                     <div id="commandHistArea" class="col-12" style=" height:380px; overflow-y: scroll;">
                         <!-- command history area -->
-                        <p id="cmds" class="text-break fs-3 text-center" ></p>
+                        <p id="cmds" class="text-break fs-3 text-center"></p>
                     </div>
-                </div> 
+                </div>
             </div>
             <!-- End of Command History Area -->
         </div>
@@ -86,8 +94,22 @@
         </div>
     </div>
 
+    <div id="modal_inc" class="modal">
+        <div class="modal-success">
+            <span class="close2">&times;</span>
+            <h2>How to play the game!</h2>
+            <hr>
+            <p> To start a new game, you have to select a challenge! "Select challenge" </p>
+            <p> The "Reset Challenge" button will reset your challenges back to square 1! </p>
+            <p> To create a new movement, drag and drop blocks into the whiteboard area!</p>
+            <p> To delete a created movement, drag the block into the rubbish bin! </p>
+            <p> After you are done creating a movement, select on "Send Command" and watch it appear in your command history!</p>
+        </div>
+    </div>
+
+
     <div id="blocklyDiv" style="position:absolute"></div>
-    
+
     <!-- Toolbox of blockly (the commands) -->
     <xml id="toolbox" style="display: none">
         <block type="forward"></block>
@@ -102,29 +124,31 @@
     <script>
         var blocklyArea = document.getElementById('blocklyArea');
         var blocklyDiv = document.getElementById('blocklyDiv');
-        var workspace = Blockly.inject(blocklyDiv,
-            {
-                toolbox: document.getElementById('toolbox'),
-                trashcan: true,
-                zoom:{pinch: true, controls:true},
+        var workspace = Blockly.inject(blocklyDiv, {
+            toolbox: document.getElementById('toolbox'),
+            trashcan: true,
+            zoom: {
+                pinch: true,
+                controls: true
+            },
         });
         var onresize = function(e) {
-          // Compute the absolute coordinates and dimensions of blocklyArea.
-          var element = blocklyArea;
-          var x = 0;
-          var y = 0;
-          do {
-            x += element.offsetLeft;
-            y += element.offsetTop;
-            element = element.offsetParent;
-          } while (element);
+            // Compute the absolute coordinates and dimensions of blocklyArea.
+            var element = blocklyArea;
+            var x = 0;
+            var y = 0;
+            do {
+                x += element.offsetLeft;
+                y += element.offsetTop;
+                element = element.offsetParent;
+            } while (element);
 
-          // Position blocklyDiv over blocklyArea.
-          blocklyDiv.style.left = x + 'px';
-          blocklyDiv.style.top = y + 'px';
-          blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
-          blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
-          Blockly.svgResize(workspace);
+            // Position blocklyDiv over blocklyArea.
+            blocklyDiv.style.left = x + 'px';
+            blocklyDiv.style.top = y + 'px';
+            blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
+            blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
+            Blockly.svgResize(workspace);
         };
         window.addEventListener('resize', onresize, false);
         onresize();
@@ -149,30 +173,28 @@
         var canvas = document.querySelector("canvas");
 
         //functions that will execute upon block sending
-        function moveForward(){
-            if(pos_y==0){
+        function moveForward() {
+            if (pos_y == 0) {
                 alert("Cant move anymore!");
-            }
-            else{
+            } else {
                 pos_y -= block_size;
                 console.log("move");
                 var ctx = canvas.getContext("2d");
-                ctx.clearRect(0,0, canvas.width, canvas.height);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
                 storehist("Forward");
 
                 setupCanvas();
                 gameOver();
             }
         }
-        
-        function moveRight(){
-            if(pos_x==224){
+
+        function moveRight() {
+            if (pos_x == 224) {
                 alert("Cant move anymore!");
-            }
-            else{  
-                pos_x += block_size;        
+            } else {
+                pos_x += block_size;
                 var ctx = canvas.getContext("2d");
-                ctx.clearRect(0,0, canvas.width, canvas.height);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
                 storehist("Right");
 
                 setupCanvas();
@@ -180,14 +202,13 @@
             }
         }
 
-        function moveLeft(){
-            if(pos_x==0){
+        function moveLeft() {
+            if (pos_x == 0) {
                 alert("Cant move anymore!");
-            }
-            else{
+            } else {
                 pos_x -= block_size;
                 var ctx = canvas.getContext("2d");
-                ctx.clearRect(0,0, canvas.width, canvas.height);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
                 storehist("Left");
 
                 setupCanvas();
@@ -195,14 +216,13 @@
             }
         }
 
-        function moveDown(){
-            if(pos_y==224){
+        function moveDown() {
+            if (pos_y == 224) {
                 alert("Cant move anymore!");
-            }
-            else{
+            } else {
                 pos_y += block_size;
                 var ctx = canvas.getContext("2d");
-                ctx.clearRect(0,0, canvas.width, canvas.height);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
                 storehist("Down");
 
                 setupCanvas();
@@ -210,9 +230,9 @@
             }
         }
 
-        function gameOver(){
+        function gameOver() {
             console.log("check");
-            if(pos_x == win_x && pos_y == win_y){
+            if (pos_x == win_x && pos_y == win_y) {
                 var modal = document.getElementById("modal_succ");
                 modal.style.display = "block";
                 var span = document.getElementsByClassName("close")[0];
@@ -222,25 +242,39 @@
             }
         }
 
+        function showInstructions() {
+            var modal_err = document.getElementById("modal_inc");
+            var span_err = document.getElementsByClassName("close2")[0];
+            modal_err.style.display = "block";
+            span_err.onclick = function() {
+                modal_err.style.display = "none";
+            }
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal_err.style.display = "none";
+                }
+            }
+        }
+
         //Add commands to array
-        function storehist(data){
+        function storehist(data) {
             histarr.push(data);
             outputhist();
         }
 
         let text = "";
         //drawing 
-        function outputhist(){
+        function outputhist() {
             const h_arr = histarr;
             h_arr.forEach(printhist)
             document.getElementById("cmds").innerHTML = text;
-            histarr= [];
+            histarr = [];
         }
 
-        function printhist(item){
+        function printhist(item) {
             text += item + "<br>";
         }
     </script>
 </body>
-</html>
 
+</html>
