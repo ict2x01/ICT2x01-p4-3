@@ -12,6 +12,7 @@ This is a basic project for children aged 9 to 12 to learning programming throug
 2. On the installation page uncheck everything expect for `"Apache"` and `"PHP"`
 
 ![image](https://user-images.githubusercontent.com/33278298/144864710-3c5d4f79-048f-4807-aaf3-2de491165b64.png)
+
 3. Choose a folder to install XAMPP on and take note of the path
 
 4. After installing go into `"Environment Variables"`, you can do so by searching `"Environmental Variable"` on the Windows search bar
