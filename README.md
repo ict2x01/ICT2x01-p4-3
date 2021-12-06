@@ -181,6 +181,74 @@ Results of Code Coverage execution:
 
 ![image](https://user-images.githubusercontent.com/33278298/144896733-d96ee9d6-447f-4e00-8788-59f4e7e66834.png)
 
+## Running the Test Suite
+## Dependencies
+1. Composer
+2. PHPUnit
+
+## Installation and execution
+`Composer:`
+1. `Composer` can be downloaded from https://getcomposer.org/download/, click on `Composer-Setup.exe`
+2. Run the downloaded exe and follow the steps to complete installation
+
+`PHPUnit:`
+1. Once composer is installed open up the terminal or cmd and run the following code
+``` composer require phpunit/phpunit```
+
+2. In the root directory of the project, create a `phpunit.xml` file that includes the following content
+``` <?version version="1.0" encoding="UTF-8" ?>
+<phpunit bootstrap="vendor/autoload.php"
+    colors="true"
+    stopOnFailure="false">
+
+    <testsuites>
+        <testsuite name="challengemanagement">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+        <directory suffix=".php">challengemanagement.php</directory>
+        <file>/path/to/file</file>
+        </whitelist>
+        </filter>
+</phpunit>
+```
+3. Run the command `./vendor/bin/phpunit --testdox` for the test suite results. PHPUnit will automatically detect the test suite with the name `xxxTest`.
+
+Successful:
+
+![image](https://user-images.githubusercontent.com/33278298/144899564-9c4eb9c3-909b-441f-ba4f-c65f880aad20.png)
+
+Failure: Example when a test case did not pass the test
+
+![image](https://user-images.githubusercontent.com/33278298/144899757-83c302e0-b2af-41f1-b9a9-77030008cdea.png)
+
+
+### Running Code Coverage
+## Dependencies
+1. XDebug
+2. PHPUnit
+3. Composer
+
+`PHPUnit` and `Composer` should have been installed earlier.
+`Xdebug:`
+1. To install run the command in terminal or cmd `composer require phpunit/php-code-coverage`
+2. Install Xdebug by going to this website `https://xdebug.org/wizard`
+3. Generate and paste your `phpinfo()`. To generate type `php -i` into terminal/cmd.
+4. Following the instructions and download XDebug
+5. Go into `php.ini` file and include the following lines
+``` 
+zend_extension = xdebug
+xdebug.mode=coverage
+```
+6. Restart IDE and webserver and run the following command on terminal/cmd **in the root directory of the project**
+```
+./vendor/bin/phpunit --coverage-html html
+```
+7. The coverage results will then be generated in the `html` file.
+
 
 
 
