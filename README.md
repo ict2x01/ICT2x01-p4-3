@@ -27,8 +27,17 @@ This is a basic project for children aged 9 to 12 to learning programming throug
 
 ![image](https://user-images.githubusercontent.com/33278298/144866302-0edd5f11-82bc-48da-9ae6-2e5a724d16ae.png)
 
+### Installation (Debian/Ubuntu Linux)
+1. Install the required packages from apt in the terminal.
+- Install PHP and Apache.
+- `sudo apt install -y apache2 php libapache2-mod-php`
+- Depending on the version of PHP, install the corresponding version of PHP SQLite.
+- `sudo apt install -y php$(php -v | head -1 | cut -d ' ' -f2 | cut -d '.' -f1,2)-sqlite3`
+2. Restart the Apache service.
+- `sudo service apache2 restart`
+
 ### Running
-1. Open `cmd`
+1. Open `cmd` in Windows or the terminal in Linux
 2. Go into the directory where the project is downloaded
 3. Insert command `php -S localhost:8000`
 4. Access `localhost:8000` in any desired web browser
@@ -83,7 +92,6 @@ Uploaded diagrams can be found in the folder `diagrams`.
 
 ### Blackbox Testing (UAT) Video
 The UAT video can be found in the folder `tests`.
-https://github.com/ict2x01/ICT2x01-p4-3/blob/62246e2257b94b709984532fab9bf348d1caada9/tests/ICT2x01-M3-UAT.mp4
 
 
 ## Whitebox Testing
