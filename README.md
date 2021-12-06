@@ -10,12 +10,18 @@ This is a basic project for children aged 9 to 12 to learning programming throug
 ### Installation (Windows)
 1. Download `"XAMPP"` from the website https://www.apachefriends.org/index.html 
 2. On the installation page uncheck everything expect for `"Apache"` and `"PHP"`
+
 ![image](https://user-images.githubusercontent.com/33278298/144864710-3c5d4f79-048f-4807-aaf3-2de491165b64.png)
 3. Choose a folder to install XAMPP on and take note of the path
+
 4. After installing go into `"Environment Variables"`, you can do so by searching `"Environmental Variable"` on the Windows search bar
+
 ![image](https://user-images.githubusercontent.com/33278298/144865278-9d82c233-bc08-4a37-b3d7-4ddd3c18276f.png)
+
 5. Add the path from point 3, into the `PATH` section in `"System Variables"` under `"Environmental Variable"`
+
 ![image](https://user-images.githubusercontent.com/33278298/144865694-c095112d-82f0-4b5f-8f76-f2cfe7aacaca.png)
+
 6. Go into the path from point 3, look for `"php" -> "php.ini"`, inside the `"php.ini"` file uncomment `"extension=sqlite3"`
 
 ![image](https://user-images.githubusercontent.com/33278298/144866302-0edd5f11-82bc-48da-9ae6-2e5a724d16ae.png)
