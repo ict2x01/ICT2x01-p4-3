@@ -46,13 +46,13 @@ Merging into `master` will only be allowed when every feature branch have been c
 
 ## UAT 
 ### Updated Use Case Diagram
-1. "Upload Challenge" is changed to "Create Challenge" - Trainers will create the challenge on the web portal itself instead of uploading
 ![image](https://user-images.githubusercontent.com/33278298/144850152-65fa0c84-d429-4bb8-82f5-0f95d3ccfc8d.png)
+1. "Upload Challenge" is changed to "Create Challenge" - Trainers will create the challenge on the web portal itself instead of uploading
 
 ### Updated System State Diagram
+![image](https://user-images.githubusercontent.com/33278298/144851843-45413492-d46c-48fd-8a12-e510f68ab4d2.png)
 1. Instruction state is now accessed from the play state instead of main state
 2. Uploading of challenge is now creating of challenge, checks for file uploads are removed 
-![image](https://user-images.githubusercontent.com/33278298/144851843-45413492-d46c-48fd-8a12-e510f68ab4d2.png)
 
 
 
